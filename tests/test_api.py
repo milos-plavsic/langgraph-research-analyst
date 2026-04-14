@@ -18,3 +18,9 @@ def test_research_pipeline() -> None:
     assert data["query"] == "Compare agent frameworks"
     assert "draft" in data
     assert data["confidence"] > 0
+
+
+def test_finetune_playbook() -> None:
+    r = client.get("/v1/finetune/playbook")
+    assert r.status_code == 200
+    assert "stack" in r.json()
