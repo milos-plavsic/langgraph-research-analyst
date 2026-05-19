@@ -1,7 +1,12 @@
 """Extension points for fine-tuning LLM-backed agent graphs (LoRA/QLoRA, DPO, tool-calling reward models)."""
 
+from ml_core import configure_logging
+
+logger = configure_logging(__name__)
+
 
 def describe_llm_finetune_playbook() -> dict:
+    """Execute the describe llm finetune playbook routine."""
     return {
         "stack": ["transformers", "peft", "trl", "datasets"],
         "typical_workflows": [
@@ -18,9 +23,10 @@ def describe_llm_finetune_playbook() -> dict:
 
 
 def main() -> None:
+    """Execute the main routine."""
     import json
 
-    print(json.dumps(describe_llm_finetune_playbook(), indent=2))
+    logger.info(json.dumps(describe_llm_finetune_playbook(), indent=2))
 
 
 if __name__ == "__main__":
